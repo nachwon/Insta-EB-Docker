@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="profile-content">
+    <div class="profile-container">
+        <div class="profile-head">
+            <div style="background-image: url({% static 'default-profile.png' %});" class="profile-img img-circle"></div>
+            <div class="profile-info">
+                <span class="username">{{ profile_user.username }}</span>
+                <div class="info-wrapper">
+                    <span>게시물 <strong>{{ profile_user.post_set.count }}</strong></span>
+                    <button onclick="document.getElementById('followers').style.display='block'">
+                        <span>팔로워 <strong>{{ profile_user.followers.count }}</strong></span>
+                    </button>
+                    <button onclick="document.getElementById('following').style.display='block'">
+                        <span>팔로잉 <strong>{{ profile_user.following.count }}</strong></span>
+                    </button>
+                </div>
+                <div class="name">
+                    <span class="nick-name">{{ profile_user.nickname }}</span>
+                    <span class="real-name">{{ profile_user.first_name }} {{ profile_user.last_name }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="post-thumbnails">
+            <div class="thumbnail-wrapper">
+            {% for post in profile_user.post_set.all %}
+                <div class="photos">
+                    <a href="{% url 'post:post_detail' pk=post.pk %}">
+                        <div class="thumb-img" style="background-image: url(/media/{{ post.photo }})" alt="">
+                            <div class="mask">
+                                <div class="thumb-info-wrapper">
+                                    <span class="like-number"> {{ post.liked.count }}</span>
+                                    <span class="comment-number"> {{ post.comments.count }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="following" class="dim-layer">
+    <div class="dimBg"></div>
+    <div id="layer2" class="pop-layer">
+        <div class="follow-title">
+            <span>팔로잉</span>
+        </div>
+        <div class="pop-container">
+            <div class="pop-conts">
+                {% for i in profile_user.following.all %}
+                <div class="follow-user">
+                    <div style="background-image: url(/media/{{ i.img_profile }})" class="user-profile-img img-circle"></div>
+                    <div class="name-wrapper">
+                        <span><strong>{{ i.username }}</strong></span>
+                        <span>{{ i.nickname }}</span>
+                    </div>
+                    {% if i not in request.user.following.all and i.pk != request.user.pk %}
+                        <a class="btn btn-default" href="{% url 'member:follow_toggle' pk=i.pk %}">팔로우</a>
+                    {% elif i.pk == request.user.pk %}
+                    {% else %}
+                        <a class="btn btn-primary" href="{% url 'member:follow_toggle' pk=i.pk %}">팔로잉</a>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+            <button class="popup-close btn btn-default" onclick="document.getElementById('following').style.display='none'">close</button>
+        </div>
+    </div>
+</div>
+
+<div id="followers" class="dim-layer">
+    <div class="dimBg"></div>
+    <div id="layer1" class="pop-layer">
+        <div class="follow-title">
+            <span>팔로워</span>
+        </div>
+        <div class="pop-container">
+            <div class="pop-conts">
+                {% for i in profile_user.followers.all %}
+                <div class="follow-user">
+                    <div style="background-image: url(/media/{{ i.img_profile }})" alt="" class="user-profile-img img-circle"></div>
+                    <div class="name-wrapper">
+                        <span><strong>{{ i.username }}</strong></span>
+                        <span>{{ i.nickname }}</span>
+                    </div>
+                    {% if i not in request.user.following.all and i.pk != request.user.pk %}
+                        <a class="btn btn-default" href="{% url 'member:follow_toggle' pk=i.pk %}">팔로우</a>
+                    {% elif i.pk == request.user.pk %}
+                    {% else %}
+                        <a class="btn btn-primary" href="{% url 'member:follow_toggle' pk=i.pk %}">팔로잉</a>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+            <button class="popup-close btn btn-default" onclick="document.getElementById('followers').style.display='none'">close</button>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

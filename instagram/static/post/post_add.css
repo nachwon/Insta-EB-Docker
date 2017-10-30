@@ -1,0 +1,35 @@
+.add-wrapper {
+    border: 1px solid #dddddd;
+    border-radius: 2px;
+    padding: 0 16px;
+    width: 600px;
+    overflow: hidden;
+}
+
+.add-wrapper input {
+    margin: 10px 0;
+}
+
+.add-wrapper input.file-upload {
+    float: left;
+}
+
+.add-wrapper input.file-upload:focus {
+    outline: none;
+}
+
+.add-wrapper textarea {
+    resize: none;
+}
+
+.add-wrapper input.btn {
+    float: right;
+}
+
+.error-message {
+    margin: 10px 0;
+    display: inline-block;
+    font-weight: bolder;
+    color: rgba(214, 0, 0, 0.842);
+}
+
