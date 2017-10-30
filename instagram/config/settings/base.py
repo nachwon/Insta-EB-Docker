@@ -12,17 +12,31 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import json
 import os
 
-
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+# Paths
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ROOT_DIR = os.path.dirname(BASE_DIR)
-CONFIG_SECRET_DIR = os.path.join(ROOT_DIR, '.config_secret')
 
 # secret information
+CONFIG_SECRET_DIR = os.path.join(ROOT_DIR, '.config_secret')
 f = open(f'{CONFIG_SECRET_DIR}/settings_common.json', 'r')
 key = f.read()
 config_secret_common = json.loads(key)
 f.close()
+
+# media paths
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+# static paths
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [
+    STATIC_DIR,
+]
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(ROOT_DIR, '.static_root')
+
+# template paths
+TEMPLATE_DIR = os.path.join(BASE_DIR, 'template')
 
 # AWS
 AWS_ACCESS_KEY_ID = config_secret_common['aws']['AWS_ACCESS_KEY_ID']
@@ -37,21 +51,7 @@ MEDIAFILES_LOCATION = 'media'
 DEFAULT_FILE_STORAGE = 'config.storages.MediaStorage'
 STATICFILES_STORAGE = 'config.storages.StaticStorage'
 
-# media files
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
-
-# static files
-STATIC_DIR = os.path.join(BASE_DIR, 'static')
-STATICFILES_DIRS = [
-    STATIC_DIR,
-]
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(ROOT_DIR, '.static_root')
-
-# template files
-TEMPLATE_DIR = os.path.join(BASE_DIR, 'template')
-
+# Auth
 AUTH_USER_MODEL = 'member.User'
 LOGIN_URL = 'member:login'
 
@@ -67,18 +67,14 @@ FACEBOOK_SCOPE = {
     'scope': ','.join(scope_fields)
 }
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config_secret_common['django']['secret_key']
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
+# Others
 ALLOWED_HOSTS = [
     # 'localhost',
     # '.ap-northeast-2.compute.amazonaws.com',
     # '.che1.kr',
 ]
-
+WSGI_APPLICATION = 'config.wsgi.application'
+DATABASES = config_secret_common['django']['databases']
 
 # Application definition
 
@@ -127,16 +123,6 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'config.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-
-
-DATABASES = config_secret_common['django']['databases']
-
-
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 
@@ -169,8 +155,8 @@ USE_L10N = True
 
 USE_TZ = True
 
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = config_secret_common['django']['secret_key']
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.11/howto/static-files/
-
-
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
