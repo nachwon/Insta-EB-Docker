@@ -13,7 +13,7 @@ import json
 import os
 
 # Paths
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 ROOT_DIR = os.path.dirname(BASE_DIR)
 
 # secret information
@@ -38,19 +38,6 @@ STATIC_ROOT = os.path.join(ROOT_DIR, '.static_root')
 # template paths
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'template')
 
-# AWS
-AWS_ACCESS_KEY_ID = config_secret_common['aws']['AWS_ACCESS_KEY_ID']
-AWS_SECRET_ACCESS_KEY = config_secret_common['aws']['AWS_SECRET_ACCESS_KEY']
-AWS_STORAGE_BUCKET_NAME = config_secret_common['aws']['AWS_STORAGE_BUCKET_NAME']
-
-# AWS Storage
-STATICFILES_LOCATION = 'static'
-MEDIAFILES_LOCATION = 'media'
-
-# S3 FileStorage
-DEFAULT_FILE_STORAGE = 'config.storages.MediaStorage'
-STATICFILES_STORAGE = 'config.storages.StaticStorage'
-
 # Auth
 AUTH_USER_MODEL = 'member.User'
 LOGIN_URL = 'member:login'
@@ -68,13 +55,7 @@ FACEBOOK_SCOPE = {
 }
 
 # Others
-ALLOWED_HOSTS = [
-    # 'localhost',
-    # '.ap-northeast-2.compute.amazonaws.com',
-    # '.che1.kr',
-]
 WSGI_APPLICATION = 'config.wsgi.application'
-DATABASES = config_secret_common['django']['databases']
 
 # Application definition
 
@@ -154,9 +135,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config_secret_common['django']['secret_key']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
