@@ -18,10 +18,11 @@ ROOT_DIR = os.path.dirname(BASE_DIR)
 
 # secret information
 CONFIG_SECRET_DIR = os.path.join(ROOT_DIR, '.config_secret')
-f = open(f'{CONFIG_SECRET_DIR}/settings_common.json', 'r')
-key = f.read()
-config_secret_common = json.loads(key)
-f.close()
+CONFIG_SECRET_COMMON_FILE = os.path.join(CONFIG_SECRET_DIR, 'settings_common.json')
+CONFIG_SECRET_DEV_FILE = os.path.join(CONFIG_SECRET_DIR, 'settings_dev.json')
+CONFIG_SECRET_DEPLOY_FILE = os.path.join(CONFIG_SECRET_DIR, 'settings_deploy.json')
+
+config_secret_common = json.loads(open(CONFIG_SECRET_COMMON_FILE).read())
 
 # media paths
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
