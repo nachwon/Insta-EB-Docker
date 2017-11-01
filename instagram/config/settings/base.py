@@ -25,7 +25,7 @@ CONFIG_SECRET_DEPLOY_FILE = os.path.join(CONFIG_SECRET_DIR, 'settings_deploy.jso
 config_secret_common = json.loads(open(CONFIG_SECRET_COMMON_FILE).read())
 
 # media paths
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, '.media')
 MEDIA_URL = '/media/'
 
 # static paths
