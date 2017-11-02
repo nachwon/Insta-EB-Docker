@@ -19,7 +19,7 @@ RUN         ln -sf /etc/nginx/sites-available/app.conf /etc/nginx/sites-enabled/
 RUN         mkdir -p /var/log/uwsgi/app
 
 # manage.py
-WORKDIR     /srv/app/mysite
+WORKDIR     /srv/app/instagram
 RUN         /root/.pyenv/versions/app/bin/python manage.py collectstatic --noinput
 RUN         /root/.pyenv/versions/app/bin/python manage.py migrate --noinput
 
