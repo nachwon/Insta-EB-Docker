@@ -6,6 +6,7 @@ from .base import *
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
+    'http://che1.ap-northeast-2.elasticbeanstalk.com/',
 ]
 
 DATABASES = {
