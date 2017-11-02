@@ -21,3 +21,6 @@ RUN         mkdir -p /var/log/uwsgi/app
 # supervisor
 RUN         cp /srv/app/.config/supervisor/* /etc/supervisor/conf.d/
 CMD         supervisord -n
+
+# port
+EXPOSE      80
