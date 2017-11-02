@@ -1,0 +1,232 @@
+/* global */
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* global end */
+/* header start */
+
+.header {
+    position: fixed;
+    top: 0px;
+    height: 77px;
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    background-color: white;
+    transition-duration: 0.2s;
+    z-index: 10;
+}
+
+.header-scrolled {
+    height: 52px;
+    transition-duration: 0.2s;
+}
+
+.header-wrapper {
+    padding: calc(77px/4) 0;
+    height: 50%;
+    width: 100%;
+    margin: 0 auto;
+    float: left;
+    text-align: center;
+    transition-duration: 0.2s;
+}
+
+.wrapper-scrolled {
+    padding: 5px;
+    transition-duration: 0.2s;
+}
+
+.insta-icon {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.insta-logo {
+    height: 40px;
+    width: 123px;
+    padding-left: 10px;
+    border-left: 1px solid rgb(146, 146, 146);
+    transition-duration: 0.2s;
+}
+
+.hide {
+    transition-duration: 0.2s;
+    height: 0px;
+}
+
+.current-username {
+    vertical-align: middle;
+    font-weight: bolder;
+    margin-right: 20px;
+}
+
+.user-list-btn {
+    width: 24px;
+    height: 24px;
+    background-image: url(https://www.instagram.com/static/bundles/sprite_core.png/13cecc35f7af.png);
+    background-position: -387px -104px;
+    border: 0;
+    background-color: transparent;
+    vertical-align: middle;
+}
+
+
+/* header end */
+/* img start*/
+.post-photo-img {
+    width: 598px;
+    float: left;
+    background-repeat: no-repeat;
+    border-bottom: 1px solid #ddd;
+}
+/* img end */
+/* buttons start*/
+
+.content-author {
+    font-weight: bolder;
+}
+
+.buttons ul {
+    margin: 0;
+    padding: 0;
+}
+
+.buttons .interact-btn {
+    height: 24px;
+    width: 24px;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.buttons input {
+    border: 0;
+    background-color: transparent;
+    padding: 0;
+}
+
+.buttons input:focus {
+    outline: none;
+}
+
+
+
+.buttons .like-button {
+    background-image: url(https://www.instagram.com/static/bundles/sprite_core.png/13cecc35f7af.png);
+    background-position: -208px -336px;
+}
+.buttons .dislike-button {
+    background-image: url(https://www.instagram.com/static/bundles/sprite_core.png/13cecc35f7af.png);
+    background-position: -182px -336px;
+}
+
+.buttons .comment-button {
+    background-image: url(https://www.instagram.com/static/bundles/sprite_core.png/13cecc35f7af.png);
+    background-position: -355px -263px;
+}
+
+.icon-wrapper {
+    margin-left: 700px;
+}
+
+.user-btn {
+    vertical-align: middle;
+    font-size: 20px;
+    margin: 0 10px;
+    color: rgb(53, 53, 53);
+    top: -1px;
+}
+
+.post-add {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+}
+
+.post-add img {
+    height: 50px;
+    width: 50px;
+    transition-duration: 0.2s;
+}
+
+.post-add img:hover {
+    height: 55px;
+    width: 55px;
+    transition-duration: 0.2s;
+}
+
+/* buttons end */
+
+.created-date {
+    font-size: 0.5em;
+    margin: 10px 0;
+    color: #999;
+}
+
+.post-form {
+    overflow: hidden;
+    border-top: 1px solid #ddd;
+    margin-top: 10px;
+    padding: 16px 0;
+}
+
+.post-form .comment-input {
+    max-width: 100%;
+    width: 94%;
+    border: 0;
+    float: left;
+}
+
+.post-form .comment-input:focus {
+    outline: none;
+}
+
+.post-form section div.options {
+    float: right;
+    background-image: url(https://www.instagram.com/static/bundles/sprite_core.png/13cecc35f7af.png);
+    background-position: -276px -115px;
+    height: 16px;
+    width: 16px;
+    margin: 3px 0;
+}
+
+.post-comment {
+    width: 100%;
+}
+
+.post-comment div.comment {
+    margin: 5px 0;
+}
+
+.post-comment div.comment p {
+    margin: 0;
+    padding: 0;
+}
+
+
+.post-content {
+    padding: 0 16px;
+}
+
+.content {
+    margin: 10px 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+
