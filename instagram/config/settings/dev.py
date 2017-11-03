@@ -24,3 +24,9 @@ STATICFILES_STORAGE = 'config.storages.StaticStorage'
 DATABASES = config_secret['django']['databases']
 
 SECRET_KEY = ''.join([random.choice(string.ascii_lowercase) for i in range(40)])
+
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    '.elasticbeanstalk.com',
+]
