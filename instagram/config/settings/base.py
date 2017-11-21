@@ -11,8 +11,10 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 import json
 import os
-
+import raven
 # Paths
+
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 ROOT_DIR = os.path.dirname(BASE_DIR)
 
@@ -70,6 +72,7 @@ INSTALLED_APPS = [
 
     'django_extensions',
     'storages',
+    'raven.contrib.django.raven_compat',
 
     'post',
     'member',
@@ -139,3 +142,10 @@ USE_TZ = True
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
+RAVEN_CONFIG = {
+    'dsn': 'https://9189ed1f1bfa40c3b8648154ea565f5e:be7d3c5baba047b5bcc3b73020ba2c47@sentry.io/248298',
+    # If you are using git, you can also automatically configure the
+    # release based on the git info.
+    'release': raven.fetch_git_sha(os.path.abspath(os.pardir)),
+}
