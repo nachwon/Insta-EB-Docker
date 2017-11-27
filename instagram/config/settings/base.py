@@ -44,6 +44,9 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, 'template')
 # Auth
 AUTH_USER_MODEL = 'member.User'
 LOGIN_URL = 'member:login'
+SUPERUSER_USERNAME = config_secret_common['django']['superuser']['username']
+SUPERUSER_PASSWORD = config_secret_common['django']['superuser']['password']
+SUPERUSER_EMAIL = config_secret_common['django']['superuser']['email']
 
 # Facebook
 FACEBOOK_APP_ID = config_secret_common['django']['facebook']['app_id']
